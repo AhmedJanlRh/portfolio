@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem; /* Adjusted gap for smaller screens */
+  padding: 10px; /* Increased padding for better spacing on smaller screens */
+}
+
+.headerHeading {
+  color: rgb(255, 255, 255);
+  margin: 10px; /* Adjusted margin for smaller screens */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: "Noto Sans", sans-serif;
+  position: relative;
+  animation: neonGlow 1.5s ease-in-out infinite alternate;
+}
+
+.headerHeading:hover {
+  color: rgba(0, 0, 255, 0.8);
+}
+
+@keyframes neonGlow {
+  0% {
+    text-shadow: 0 0 5px rgba(0, 0, 255, 0.8), 0 0 10px rgba(0, 0, 255, 0.8),
+      0 0 15px rgba(0, 0, 255, 0.8);
+  }
+  100% {
+    text-shadow: 0 0 3px rgba(0, 0, 255, 0.8), 0 0 6px rgba(0, 0, 255, 0.8),
+      0 0 9px rgba(0, 0, 255, 0.8);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    font-size: 10px;
+    align-items: flex-start;
+  }
+  .headerHeading {
+    margin: 5px;
+  }
+}

@@ -1,0 +1,48 @@
+
+.neonOcean {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: #87CEEB;
+    background: linear-gradient(to bottom, #000000, #000033); 
+  overflow: hidden;
+}
+
+
+
+.neonOcean:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  animation: stars 50s infinite linear;
+}
+
+@keyframes stars {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+.star {
+  position: absolute;
+  width: 2px; 
+    height: 2px;
+  background-color: #fff; 
+  border-radius: 50%;
+  animation: neonGlow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes neonGlow {
+  from {
+    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff; 
+  }
+  to {
+    box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff; 
+  }
+} 
