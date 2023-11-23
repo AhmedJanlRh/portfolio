@@ -7,6 +7,8 @@ import styles from "../styles/Home.module.css";
 import Header from "../components/Header";
 import model from "../Models/untitled.glb";
 import ParticleEffect from "../components/ParticleEffect";
+import { useMediaQuery } from "react-responsive";
+
 const spans = [
   "Greetings!",
   "I'm Ahmed Jan, a Full Stack MERN developer.",
@@ -30,17 +32,29 @@ const Home = () => {
   const handleAnimationComplete = () => {
     setCurrentSpanIndex((prevIndex) => (prevIndex + 1) % spans.length);
   };
-
+  const isMobile = window.innerWidth < 600;
   const textDisplay = () => {
     return (
       <div className={styles.textContainer}>
         <h1 style={{ color: "white" }}>
           <motion.div
             key={currentSpanIndex}
-            initial={{ opacity: 0, x: 10 }}
-            animate={{ opacity: 0.9, x: 0 }}
-            exit={{ opacity: 0, x: 20 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
+            initial={{
+              opacity: 0,
+              x: isMobile ? 0 : 20,
+              y: isMobile ? 20 : 0,
+            }}
+            animate={{ opacity: 0.9, x: 0, y: 0 }}
+            exit={{
+              opacity: 0,
+              x: isMobile ? 0 : 20,
+              y: isMobile ? 20 : 0,
+            }}
+            transition={{
+              duration: 1.5,
+              ease: "easeInOut",
+              delay: 0.5,
+            }}
             onAnimationComplete={handleAnimationComplete}
           >
             {spans[currentSpanIndex]}
@@ -80,7 +94,7 @@ const Home = () => {
   };
 
   const sreen = () => {
-    if (window.innerWidth < 768) {
+    if (window.innerWidth < 600) {
       return false;
     } else {
       return true;
