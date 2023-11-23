@@ -10,10 +10,6 @@ const Dropdown = ({ symbol }) => {
     setIsOpen(!isOpen);
   };
 
-  const handleItemClick = (item) => {
-    console.log(`Selected item: ${item}`);
-  };
-
   return (
     <>
       <div
@@ -24,29 +20,23 @@ const Dropdown = ({ symbol }) => {
         }}
       >
         {symbol()}
-        <div className={`dropdown-container ${isOpen ? "open" : ""}`}>
-          <button className="dropdown-button" onClick={toggleDropdown}>
-            <FaChevronDown
-              className={`chevron-icon ${isOpen ? "rotate" : ""}`}
-              size={30}
-              style={{ marginRight: "10px", marginTop: "10px" }}
-            />
-          </button>
-          <div className={`dropdown-menu ${isOpen ? "show" : ""}`}>
-            <NavLink
-              to="/about"
-              style={{ textDecoration: "none" }}
-              onClick={() => handleItemClick("About")}
-            >
-              <h1 className="dropdown-item">About</h1>
-            </NavLink>
-            <NavLink
-              to="/contact"
-              style={{ textDecoration: "none" }}
-              onClick={() => handleItemClick("Contact")}
-            >
-              <h1 className="dropdown-item">Contact</h1>
-            </NavLink>
+        <div>
+          <div className={`dropdown-container ${isOpen ? "open" : ""}`}>
+            <button className="dropdown-button" onClick={toggleDropdown}>
+              <FaChevronDown
+                className={`chevron-icon ${isOpen ? "rotate" : ""}`}
+                size={30}
+              />
+            </button>
+            <br />
+            <div className={`dropdown-menu ${isOpen ? "show" : ""}`}>
+              <NavLink to="/about" style={{ textDecoration: "none" }}>
+                <h1 className="dropdown-item">About</h1>
+              </NavLink>
+              <NavLink to="/contact" style={{ textDecoration: "none" }}>
+                <h1 className="dropdown-item">Contact</h1>
+              </NavLink>
+            </div>
           </div>
         </div>
       </div>

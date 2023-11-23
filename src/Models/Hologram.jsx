@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from "react";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader";
 import { useThree, extend } from "@react-three/fiber";
 import * as THREE from "three";
+import ParticleEffect from "../components/ParticleEffect";
 
 extend({ GLTFLoader });
 
@@ -49,7 +50,6 @@ const Hologram = ({ modelPath }) => {
       mixer.update(delta);
       requestAnimationFrame(animateFrame);
     };
-
     animateFrame();
   };
 
