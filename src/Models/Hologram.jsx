@@ -8,14 +8,19 @@ extend({ GLTFLoader });
 const Hologram = ({ modelPath }) => {
   const gltf = useRef();
   const { scene, animations, clock } = useThree();
-  const hello = "hello";
   useEffect(() => {
     const loader = new GLTFLoader();
+    let position;
+    if (window.innerWidth < 600) {
+      position = [0, 0, 1];
+    } else {
+      position = [0, 0.3, 1.2];
+    }
+
     loader.load(modelPath, (gltfResult) => {
       gltf.current = gltfResult;
-
       gltf.current.scene.scale.set(1, 1, 1);
-      gltf.current.scene.position.set(0, 0.3, 1.2);
+      gltf.current.scene.position.set(position[0], position[1], position[2]);
       gltf.current.scene.rotation.set(0, 0, 0);
       gltf.current.scene.traverse((child) => {
         if (child.isMesh) {

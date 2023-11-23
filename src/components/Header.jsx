@@ -1,19 +1,33 @@
 import React from "react";
 import styles from "../styles/Header.module.css";
 import { NavLink } from "react-router-dom";
+import Dropdown from "./Dropwdown";
 const Header = () => {
   const headerHeading = styles.headerHeading;
-  return (
-    <>
+  let symbolFontSize;
+  if (window.innerWidth < 600) {
+    symbolFontSize = "30px";
+  } else {
+    symbolFontSize = "50px";
+  }
+
+  const symbol = () => {
+    return (
+      <NavLink to="/" style={{ textDecoration: "none" }}>
+        <h1
+          className={headerHeading}
+          style={{ fontSize: symbolFontSize, fontFamily: "Allura" }}
+        >
+          AJ
+        </h1>
+      </NavLink>
+    );
+  };
+
+  const normalHeader = () => {
+    return (
       <div className={styles.container}>
-        <NavLink to="/" style={{ textDecoration: "none" }}>
-          <h1
-            className={headerHeading}
-            style={{ fontFamily: "Allura", fontSize: "50px" }}
-          >
-            A.J
-          </h1>
-        </NavLink>
+        {symbol()}
         <NavLink
           to="/about"
           style={{ marginLeft: "auto", textDecoration: "none" }}
@@ -26,8 +40,14 @@ const Header = () => {
           <h1 className={headerHeading}>Contact</h1>
         </NavLink>
       </div>
-    </>
-  );
+    );
+  };
+
+  if (window.innerWidth < 600) {
+    return <Dropdown symbol={symbol} />;
+  } else {
+    return normalHeader();
+  }
 };
 
 export default Header;

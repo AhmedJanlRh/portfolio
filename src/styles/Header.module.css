@@ -2,13 +2,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem; /* Adjusted gap for smaller screens */
-  padding: 10px; /* Increased padding for better spacing on smaller screens */
+  gap: 1rem;
+  padding: 10px;
 }
 
 .headerHeading {
   color: rgb(255, 255, 255);
-  margin: 10px; /* Adjusted margin for smaller screens */
+  margin: 10px;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-family: "Noto Sans", sans-serif;
@@ -31,12 +31,20 @@
   }
 }
 
+.chevron-icon {
+  transition: transform 0.3s ease-in-out;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
 @media screen and (max-width: 600px) {
   .container {
     font-size: 10px;
     align-items: flex-start;
   }
   .headerHeading {
-    margin: 5px;
+    margin: 20px;
   }
 }
