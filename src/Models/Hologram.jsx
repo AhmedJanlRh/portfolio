@@ -8,7 +8,7 @@ extend({ GLTFLoader });
 const Hologram = ({ modelPath }) => {
   const gltf = useRef();
   const { scene, animations, clock } = useThree();
-
+  const hello = "hello";
   useEffect(() => {
     const loader = new GLTFLoader();
     loader.load(modelPath, (gltfResult) => {
@@ -32,7 +32,6 @@ const Hologram = ({ modelPath }) => {
 
       gltf.current.scene.animations = animations;
       scene.add(gltf.current.scene);
-
 
       animate(mixer);
     });
