@@ -7,7 +7,6 @@ import styles from "../styles/Home.module.css";
 import Header from "../components/Header";
 import model from "../Models/untitled.glb";
 import ParticleEffect from "../components/ParticleEffect";
-import { useMediaQuery } from "react-responsive";
 
 const spans = [
   "Greetings!",
@@ -51,7 +50,7 @@ const Home = () => {
               y: isMobile ? 20 : 0,
             }}
             transition={{
-              duration: 1.5,
+              duration: isMobile ? 2 : 1.8,
               ease: "easeInOut",
               delay: 0.5,
             }}
@@ -72,9 +71,10 @@ const Home = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
+        {/* <mesh> */}
         <Canvas
           camera={{ near: 0.1, far: 1000 }}
-          className={`${isRotating ? styles.Hologram : styles.Holograb} `}
+          className={`${isRotating ? styles.Holograb : styles.Hologram} `}
         >
           <Suspense fallback={<Loader />}>
             <directionalLight intensity={0.8} position={[1, 1, 1]} />
@@ -86,9 +86,10 @@ const Home = () => {
             />
             <pointLight intensity={23} position={[0, 0, 5]} />
             <hemisphereLight intensity={0.6} color="#fff" />
-            <Hologram modelPath={model} />
+            <Hologram modelPath={model} setIsRotating={setIsRotating} />
           </Suspense>
         </Canvas>
+        {/* </mesh> */}
       </motion.div>
     );
   };

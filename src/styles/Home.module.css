@@ -10,6 +10,17 @@
   align-items: center;
   justify-content: center;
   z-index: 2;
+  /* background-color: aliceblue; */
+  /* padding: 100px; */
+}
+
+.Hologram:hover {
+  cursor: grab;
+  transition: 0.5s;
+}
+
+.Holograb {
+  cursor: grabbing;
 }
 
 .textContainer {
